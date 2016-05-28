@@ -14,6 +14,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     public static final String COL_2="NAME";
     public static final String COL_3="SURNAME";
     public static final String COL_4="MARKS";
+
     public databaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase db=this.getWritableDatabase();
@@ -23,13 +24,13 @@ public class databaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_NAME+"CREATE TABLE"+"("+COL_1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+COL_2+" TEXT,"
-                +COL_3+" TEXT,"+COL_4+" INTEGER); ");
+        db.execSQL("CREATE TABLE "+ TABLE_NAME +"("+COL_1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+COL_2+" TEXT,"
+                +COL_3+" TEXT,"+COL_4+" INTEGER);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST"+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXIST "+TABLE_NAME);
         onCreate(db);
 
     }
